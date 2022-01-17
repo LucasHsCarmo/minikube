@@ -1,0 +1,26 @@
+---
+- name: Set up the repository
+  apt: 
+    pkg:
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+    state: present
+    update_cache: yes
+      
+- name: Add GPG key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add docker repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+
+- name: Install docker
+  apt: 
+    pkg:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io

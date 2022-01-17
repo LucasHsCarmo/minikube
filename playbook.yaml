@@ -1,0 +1,5 @@
+---
+- hosts: minikube
+  become: true
+  roles:
+    - docker
