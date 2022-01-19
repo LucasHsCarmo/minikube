@@ -1,0 +1,36 @@
+---
+- name: Set up the repository
+  apt: 
+    pkg: "{{ pkg_repository }}"
+    state: present
+    update_cache: yes
+      
+- name: Add GPG key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add docker repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+
+- name: Install docker
+  apt: 
+    pkg: "{{ pkg_docker }}"
+    state: present
+    update_cache: yes
+
+- name: Enable service docker
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
+
+- name: Create group docker
+  ansible.builtin.user:
+    name: "{{ docker_group }}"
+    state: present
+
+- name: Add remote "vagrant" user to "docker" group
+  ansible.builtin.user:
+    name: "{{ remote_user }}"
+    group: "{{ docker_group }}"

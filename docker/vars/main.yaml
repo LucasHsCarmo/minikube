@@ -1,0 +1,18 @@
+---
+# vars file for docker
+pkg_repository:
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+
+pkg_docker:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+docker_group: "docker"
+remote_user: "vagrant"
+
+minikube_version: "latest"
+installer_type: "minikube-linux-amd64"

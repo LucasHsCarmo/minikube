@@ -1,0 +1,4 @@
+---
+# tasks file for docker
+- import_tasks: install_docker.yaml
+- import_tasks: install_minikube.yaml

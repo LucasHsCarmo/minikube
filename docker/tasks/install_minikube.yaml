@@ -1,0 +1,15 @@
+---
+- name: Download minikube version {{ minikube_version }}
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/{{ minikube_version}}/{{ installer_type }}
+    dest: /tmp/
+    mode: '0644'
+
+- name: Install minikube version {{ minikube_version }}
+  ansible.builtin.command: install /tmp/{{ installer_type }} /usr/local/bin/minikube
+  #ansible.builtin.command: sudo install /tmp/{{ installer_type }} /usr/local/bin/minikube
+
+- name: Delete {{ installer_type }} from /tmp/
+  ansible.builtin.file:
+    path: /tmp/{{ installer_type }}
+    state: absent
