@@ -47,10 +47,17 @@ Realizado o passo citado a cima, dentro do container seguiremos da seguinte form
 ansible-playbook -i hosts playbook.yaml --ssh-common-args='-o StrictHostKeyChecking=no'
 ```
 
-Conectando via ssh no servidor minikube
+Conectando via ssh no servidor minikube e startando serviço
 
 ```bash
 vagrant ssh minikube
+minikube start
+```
+
+Desligando servidor minikube
+
+```bash
+vagrant halt minikube
 ```
 
 Destruindo servidor minikube
@@ -58,6 +65,3 @@ Destruindo servidor minikube
 ```bash
 vagrant destroy -f minikube
 ```
-
-### Faz o aumento do disksize no VMware
-vagrant plugin install vagrant-disksize
