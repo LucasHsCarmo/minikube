@@ -27,7 +27,7 @@ vagrant status
 
 Após o servidor **minikube** estiver **running**, abrir outra aba do terminar para executar o **container** responsável por configurar o ambiente minikube.
 
-Container que executará o ansible -> [Imagem DockerHub](https://hub.docker.com/repository/docker/lucascarmo/iac)
+Container que executará o ansible: [Imagem DockerHub](https://hub.docker.com/repository/docker/lucascarmo/iac)
 
 ```bash
 docker container run -it -v $PWD:/iac -w /iac --entrypoint "" lucascarmo/iac:latest bash
